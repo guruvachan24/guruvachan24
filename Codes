@@ -1,60 +1,95 @@
-<!DOCTYPE html>
-<html lang="en">
+
+<!DOCTYPE html><html lang="en">
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Anime World</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
   <style>
-    body {
+    * {
       margin: 0;
-      background: #000;
-      overflow: hidden;
+      padding: 0;
+      box-sizing: border-box;
     }
-
-    .heart {
-      width: 50px;
-      height: 50px;
-      background: red;
-      position: absolute;
-      top: 100vh;
-      left: 50%;
-      transform: translateX(-50%) rotate(-45deg);
-      animation: floatUp 5s linear infinite;
-      opacity: 0.8;
+    body {
+      font-family: 'Bebas Neue', cursive;
+      background-color: #111;
+      color: #fff;
+      overflow-x: hidden;
     }
-
-    .heart::before,
-    .heart::after {
-      content: '';
-      width: 50px;
-      height: 50px;
-      background: red;
-      position: absolute;
-      border-radius: 50%;
+    header {
+      background: url('https://wallpaperaccess.com/full/1669285.jpg') no-repeat center center/cover;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-shadow: 2px 2px 5px black;
     }
-
-    .heart::before {
-      top: -25px;
-      left: 0;
+    header h1 {
+      font-size: 5rem;
+      margin-bottom: 20px;
     }
-
-    .heart::after {
-      top: 0;
-      left: 25px;
+    header p {
+      font-size: 1.5rem;
+      max-width: 60%;
+      text-align: center;
     }
-
-    @keyframes floatUp {
-      0% {
-        transform: translate(-50%, 0) rotate(-45deg);
-        opacity: 1;
-      }
-      100% {
-        transform: translate(-50%, -100vh) rotate(-45deg);
-        opacity: 0;
-      }
+    nav {
+      background: #222;
+      padding: 15px;
+      text-align: center;
+    }
+    nav a {
+      color: #ff3366;
+      margin: 0 15px;
+      text-decoration: none;
+      font-size: 1.2rem;
+    }
+    section {
+      padding: 60px 20px;
+      text-align: center;
+    }
+    .characters img {
+      width: 200px;
+      border-radius: 12px;
+      margin: 20px;
+      box-shadow: 0 0 15px #ff3366;
+      transition: transform 0.3s;
+    }
+    .characters img:hover {
+      transform: scale(1.05);
+    }
+    .quote {
+      background: #222;
+      padding: 40px;
+      font-size: 2rem;
+      color: #ffccff;
+      margin: 40px auto;
+      width: 80%;
+      border-left: 5px solid #ff3366;
+    }
+    footer {
+      background: #111;
+      padding: 20px;
+      text-align: center;
+      color: #777;
+      font-size: 0.9rem;
     }
   </style>
 </head>
 <body>
-  <!-- You can duplicate this div for more hearts -->
-  <div class="heart" style="left: 30%; animation-delay: 0s;"></div>
-  <div class="heart" style="left: 60%; animation-delay: 1s;"></div>
-  <div class="heart" style="left: 80%; animation-delay: 2s;"></div>
-  <div class="
+  <header>
+    <h1>Welcome to Anime World</h1>
+    <p>Your portal to the greatest anime universes ever imagined.</p>
+  </header>  <nav>
+    <a href="#naruto">Naruto</a>
+    <a href="#onepiece">One Piece</a>
+    <a href="#dbz">Dragon Ball Z</a>
+  </nav>  <section id="naruto">
+    <h2>Naruto</h2>
+    <div class="characters">
+      <img src="https://upload.wikimedia.org/wikipedia/en/9/94/Naruto_Uzumaki.png" alt="Naruto">
+      <img src="https://upload.wikimedia.org/wikipedia/en/7/79/SasukeUchiha.png" alt="Sasuke">
+    </div>
+    <div class="quote">"I never go back on my word... that's
