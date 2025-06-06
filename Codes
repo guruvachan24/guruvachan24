@@ -1,4 +1,3 @@
-
 <!DOCTYPE html><html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -92,4 +91,23 @@
       <img src="https://upload.wikimedia.org/wikipedia/en/9/94/Naruto_Uzumaki.png" alt="Naruto">
       <img src="https://upload.wikimedia.org/wikipedia/en/7/79/SasukeUchiha.png" alt="Sasuke">
     </div>
-    <div class="quote">"I never go back on my word... that's
+    <div class="quote">"I never go back on my word... that's my nindō!" – Naruto Uzumaki</div>
+  </section>  <section id="onepiece">
+    <h2>One Piece</h2>
+    <div class="characters">
+      <img src="https://upload.wikimedia.org/wikipedia/en/5/50/Monkey_D_Luffy.png" alt="Luffy">
+      <img src="https://upload.wikimedia.org/wikipedia/en/0/0b/Roronoa_Zoro.png" alt="Zoro">
+    </div>
+    <div class="quote">"I'm gonna be King of the Pirates!" – Monkey D. Luffy</div>
+  </section>  <section id="dbz">
+    <h2>Dragon Ball Z</h2>
+    <div class="characters">
+      <img src="https://upload.wikimedia.org/wikipedia/en/0/01/Goku_anime.png" alt="Goku">
+      <img src="https://upload.wikimedia.org/wikipedia/en/c/c2/Vegeta_Dragon_Ball.png" alt="Vegeta">
+    </div>
+    <div class="quote">"Power comes in response to a need, not a desire." – Goku</div>
+  </section>  <footer>
+    Anime World &copy; 2025 | Made with ❤️ for anime fans
+  </footer>
+</body>
+</html>
