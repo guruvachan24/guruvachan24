@@ -1,129 +1,60 @@
-Perfect! Let’s level up your Naruto-themed HTML + CSS snippets by adding videos, images, and full visual designs you can use in VS Code.
-
-> ✅ I’ll use publicly available images and a YouTube embed for video. You can replace them with local files later if needed.
-
-
-
-
----
-
-🔥 1. Naruto Character Card with Image + Hover Flip Effect
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <style>
     body {
-      background: #1a1a1a;
-      font-family: sans-serif;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-    }
-
-    .card {
-      width: 300px;
-      height: 400px;
-      perspective: 1000px;
-    }
-
-    .inner {
-      position: relative;
-      width: 100%;
-      height: 100%;
-      transition: transform 1s;
-      transform-style: preserve-3d;
-    }
-
-    .card:hover .inner {
-      transform: rotateY(180deg);
-    }
-
-    .front, .back {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      backface-visibility: hidden;
-      border-radius: 15px;
-      overflow: hidden;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-    }
-
-    .front {
+      margin: 0;
       background: #000;
+      overflow: hidden;
     }
 
-    .front img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
+    .heart {
+      width: 50px;
+      height: 50px;
+      background: red;
+      position: absolute;
+      top: 100vh;
+      left: 50%;
+      transform: translateX(-50%) rotate(-45deg);
+      animation: floatUp 5s linear infinite;
+      opacity: 0.8;
     }
 
-    .back {
-      background: #ff9900;
-      color: white;
-      transform: rotateY(180deg);
-      padding: 20px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-    }
-  </style>
-</head>
-<body>
-  <div class="card">
-    <div class="inner">
-      <div class="front">
-        <img src="https://i.pinimg.com/originals/71/85/f9/7185f931b07cf12a10b58dd3b57cf70b.jpg" alt="Naruto">
-      </div>
-      <div class="back">
-        <h2>Naruto Uzumaki</h2>
-        <p>“Believe it!”</p>
-        <p>Hokage Dreamer. Shadow Clone Master.</p>
-      </div>
-    </div>
-  </div>
-</body>
-</html>
-
-
----
-
-🎥 2. Naruto Video Embed (YouTube Trailer)
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <style>
-    body {
-      background: #111;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      flex-direction: column;
-      color: #fff;
-      font-family: sans-serif;
+    .heart::before,
+    .heart::after {
+      content: '';
+      width: 50px;
+      height: 50px;
+      background: red;
+      position: absolute;
+      border-radius: 50%;
     }
 
-    iframe {
-      border: 5px solid #f39c12;
-      border-radius: 10px;
-      width: 560px;
-      height: 315px;
-      box-shadow: 0 0 30px rgba(255, 165, 0, 0.5);
+    .heart::before {
+      top: -25px;
+      left: 0;
+    }
+
+    .heart::after {
+      top: 0;
+      left: 25px;
+    }
+
+    @keyframes floatUp {
+      0% {
+        transform: translate(-50%, 0) rotate(-45deg);
+        opacity: 1;
+      }
+      100% {
+        transform: translate(-50%, -100vh) rotate(-45deg);
+        opacity: 0;
+      }
     }
   </style>
 </head>
 <body>
-  <h2>Naruto AMV: Rise of a Ninja</h2>
-  <iframe src="https://www.youtube.com/embed/JJmlAvm9I4Q" title="Naruto Video" allowfullscreen></iframe>
-</body>
-</html>
-
-> Replace the `src
-
-
-
+  <!-- You can duplicate this div for more hearts -->
+  <div class="heart" style="left: 30%; animation-delay: 0s;"></div>
+  <div class="heart" style="left: 60%; animation-delay: 1s;"></div>
+  <div class="heart" style="left: 80%; animation-delay: 2s;"></div>
+  <div class="
