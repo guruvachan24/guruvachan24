@@ -1,181 +1,62 @@
-<!DOCTYPE html><html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Free Fire Arsenal</title>
-  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@600&display=swap" rel="stylesheet">
+  <title>Message for Vandana</title>
   <style>
-    * {
+    body {
       margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }body {
-  font-family: 'Rajdhani', sans-serif;
-  background: linear-gradient(120deg, #0f0f0f, #1a1a1a);
-  color: #fff;
-  overflow-x: hidden;
-}
+      height: 100vh;
+      background: linear-gradient(to right, #1f1c2c, #928dab);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      font-family: 'Segoe UI', sans-serif;
+    }
 
-header {
-  height: 100vh;
-  background: url('https://cdn.wallpapersafari.com/17/5/jf8UKS.jpg') no-repeat center center/cover;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  animation: fadeIn 2s ease;
-}
+    .msg-box {
+      text-align: center;
+      color: #fff;
+      animation: fadeIn 2s ease-in-out forwards;
+    }
 
-@keyframes fadeIn {
-  from {opacity: 0; transform: scale(1.1);}
-  to {opacity: 1; transform: scale(1);}
-}
+    h1 {
+      font-size: 3rem;
+      color: #ffccf9;
+      text-shadow: 0 0 15px #f0f;
+      animation: glow 2s ease-in-out infinite alternate;
+    }
 
-header h1 {
-  font-size: 4rem;
-  color: #ffcd00;
-  text-shadow: 0 0 20px #000;
-}
+    p {
+      font-size: 1.3rem;
+      margin-top: 15px;
+      color: #ffe6f7;
+      animation: slideUp 2s ease-out;
+    }
 
-header p {
-  margin-top: 20px;
-  font-size: 1.3rem;
-  color: #ddd;
-  max-width: 700px;
-}
+    @keyframes glow {
+      from { text-shadow: 0 0 10px #f0f, 0 0 20px #f0f; }
+      to { text-shadow: 0 0 25px #ff99cc, 0 0 40px #ff99cc; }
+    }
 
-nav {
-  background: #111;
-  padding: 15px;
-  text-align: center;
-  position: sticky;
-  top: 0;
-  z-index: 100;
-}
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(1.1); }
+      to { opacity: 1; transform: scale(1); }
+    }
 
-nav a {
-  color: #ffcd00;
-  margin: 0 15px;
-  text-decoration: none;
-  font-size: 1.1rem;
-  transition: color 0.3s ease;
-}
-
-nav a:hover {
-  color: #fff;
-}
-
-section {
-  padding: 60px 20px;
-  text-align: center;
-}
-
-.section-title {
-  font-size: 2.5rem;
-  color: #ffcd00;
-  margin-bottom: 40px;
-}
-
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 30px;
-}
-
-.card {
-  background: #1e1e1e;
-  border-radius: 10px;
-  overflow: hidden;
-  box-shadow: 0 0 15px #000;
-  transition: transform 0.3s ease;
-}
-
-.card:hover {
-  transform: scale(1.05);
-}
-
-.card img {
-  width: 100%;
-  height: 200px;
-  object-fit: cover;
-}
-
-.card h3 {
-  padding: 15px;
-  font-size: 1.3rem;
-  color: #fff;
-}
-
-.video-section iframe {
-  width: 90%;
-  max-width: 800px;
-  height: 450px;
-  border: none;
-  border-radius: 10px;
-  box-shadow: 0 0 30px #ffcd00;
-}
-
-footer {
-  background: #000;
-  padding: 20px;
-  text-align: center;
-  color: #888;
-  font-size: 0.9rem;
-}
-
+    @keyframes slideUp {
+      from { transform: translateY(50px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
   </style>
 </head>
 <body>
-  <header>
-    <h1>Free Fire Arsenal</h1>
-    <p>Explore all Free Fire collections: Emotes, Bundles, Guns & More – All in one place!</p>
-  </header>  <nav>
-    <a href="#emotes">Emotes</a>
-    <a href="#bundles">Bundles</a>
-    <a href="#guns">Guns</a>
-    <a href="#videos">Videos</a>
-  </nav>  <section id="emotes">
-    <h2 class="section-title">🔥 Top Emotes</h2>
-    <div class="grid">
-      <div class="card">
-        <img src="https://staticg.sportskeeda.com/editor/2021/04/c2997-16174434238442-800.jpg" alt="Emote 1">
-        <h3>LOL Emote</h3>
-      </div>
-      <div class="card">
-        <img src="https://staticg.sportskeeda.com/editor/2021/04/8e0a3-16174434344862-800.jpg" alt="Emote 2">
-        <h3>Booyah Emote</h3>
-      </div>
-    </div>
-  </section>  <section id="bundles">
-    <h2 class="section-title">👕 Exclusive Bundles</h2>
-    <div class="grid">
-      <div class="card">
-        <img src="https://staticg.sportskeeda.com/editor/2021/04/e04cf-16174434437420-800.jpg" alt="Bundle 1">
-        <h3>Hip Hop Bundle</h3>
-      </div>
-      <div class="card">
-        <img src="https://staticg.sportskeeda.com/editor/2021/04/c24a7-16174434527498-800.jpg" alt="Bundle 2">
-        <h3>Street Boy Bundle</h3>
-      </div>
-    </div>
-  </section>  <section id="guns">
-    <h2 class="section-title">🔫 Legendary Guns</h2>
-    <div class="grid">
-      <div class="card">
-        <img src="https://assets.khiladiadda.com/ff-weapons/ak47.png" alt="Gun 1">
-        <h3>AK47 Dragon</h3>
-      </div>
-      <div class="card">
-        <img src="https://assets.khiladiadda.com/ff-weapons/mp40.png" alt="Gun 2">
-        <h3>MP40 Lightning</h3>
-      </div>
-    </div>
-  </section>  <section id="videos" class="video-section">
-    <h2 class="section-title">🎥 Action Trailer</h2>
-    <iframe src="https://www.youtube.com/embed/nw4FV4lVON4" allowfullscreen></iframe>
-  </section>  <footer>
-    Free Fire Arsenal &copy; 2025 | Unleash your style and power!
-  </footer>
+  <div class="msg-box">
+    <h1>Dear Vandana 🌸</h1>
+    <p>You are a beautiful soul, full of grace and light.<br>
+    This world is brighter with you in it. 💫<br>
+    Keep smiling, keep shining! 💖</p>
+  </div>
 </body>
 </html>
