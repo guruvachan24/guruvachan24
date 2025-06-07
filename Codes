@@ -2,142 +2,125 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Anime Galaxy</title>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
+  <title>Free Fire Arsenal</title>
+  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@600&display=swap" rel="stylesheet">
   <style>
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
     }body {
-  font-family: 'Orbitron', sans-serif;
-  background-color: #0b0c10;
+  font-family: 'Rajdhani', sans-serif;
+  background: linear-gradient(120deg, #0f0f0f, #1a1a1a);
   color: #fff;
   overflow-x: hidden;
 }
 
 header {
   height: 100vh;
-  background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://wallpaperaccess.com/full/84218.jpg') no-repeat center center/cover;
+  background: url('https://cdn.wallpapersafari.com/17/5/jf8UKS.jpg') no-repeat center center/cover;
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
+  align-items: center;
   text-align: center;
+  animation: fadeIn 2s ease;
+}
+
+@keyframes fadeIn {
+  from {opacity: 0; transform: scale(1.1);}
+  to {opacity: 1; transform: scale(1);}
 }
 
 header h1 {
   font-size: 4rem;
-  color: #ff4d6d;
-  text-shadow: 2px 2px 10px #000;
+  color: #ffcd00;
+  text-shadow: 0 0 20px #000;
 }
 
 header p {
-  font-size: 1.3rem;
-  max-width: 700px;
   margin-top: 20px;
+  font-size: 1.3rem;
   color: #ddd;
+  max-width: 700px;
 }
 
 nav {
-  background: #1f2833;
-  padding: 15px 0;
+  background: #111;
+  padding: 15px;
   text-align: center;
   position: sticky;
   top: 0;
-  z-index: 1000;
+  z-index: 100;
 }
 
 nav a {
-  color: #66fcf1;
-  margin: 0 20px;
+  color: #ffcd00;
+  margin: 0 15px;
   text-decoration: none;
   font-size: 1.1rem;
-  transition: color 0.3s;
+  transition: color 0.3s ease;
 }
 
 nav a:hover {
-  color: #ff4d6d;
+  color: #fff;
 }
 
-.section {
+section {
   padding: 60px 20px;
   text-align: center;
 }
 
-.section h2 {
+.section-title {
   font-size: 2.5rem;
-  color: #66fcf1;
-  margin-bottom: 30px;
+  color: #ffcd00;
+  margin-bottom: 40px;
 }
 
-.gallery {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 30px;
 }
 
 .card {
-  background: #1f2833;
-  border-radius: 12px;
+  background: #1e1e1e;
+  border-radius: 10px;
   overflow: hidden;
-  width: 250px;
-  transition: transform 0.3s, box-shadow 0.3s;
+  box-shadow: 0 0 15px #000;
+  transition: transform 0.3s ease;
 }
 
 .card:hover {
   transform: scale(1.05);
-  box-shadow: 0 0 20px #66fcf1;
 }
 
 .card img {
   width: 100%;
-  height: 300px;
+  height: 200px;
   object-fit: cover;
 }
 
 .card h3 {
   padding: 15px;
-  font-size: 1.2rem;
+  font-size: 1.3rem;
   color: #fff;
 }
 
-.quote {
-  background: #45a29e;
-  color: #0b0c10;
-  font-size: 1.5rem;
-  padding: 40px;
-  margin: 40px 20px;
-  border-left: 8px solid #ff4d6d;
-  border-radius: 8px;
-}
-
-.video-section {
-  padding: 60px 20px;
-  text-align: center;
-  background: #1f2833;
-}
-
-.video-section h2 {
-  color: #ff4d6d;
-  margin-bottom: 20px;
-}
-
-iframe {
+.video-section iframe {
   width: 90%;
   max-width: 800px;
   height: 450px;
   border: none;
   border-radius: 10px;
-  box-shadow: 0 0 20px #66fcf1;
+  box-shadow: 0 0 30px #ffcd00;
 }
 
 footer {
-  background: #0b0c10;
+  background: #000;
   padding: 20px;
   text-align: center;
-  color: #aaa;
+  color: #888;
   font-size: 0.9rem;
 }
 
@@ -145,38 +128,54 @@ footer {
 </head>
 <body>
   <header>
-    <h1>Anime Galaxy</h1>
-    <p>Explore your favorite anime universes with stunning visuals, powerful quotes, and awesome content.</p>
+    <h1>Free Fire Arsenal</h1>
+    <p>Explore all Free Fire collections: Emotes, Bundles, Guns & More – All in one place!</p>
   </header>  <nav>
-    <a href="#characters">Characters</a>
-    <a href="#quotes">Quotes</a>
-    <a href="#trailers">Trailers</a>
-  </nav>  <section class="section" id="characters">
-    <h2>Featured Characters</h2>
-    <div class="gallery">
+    <a href="#emotes">Emotes</a>
+    <a href="#bundles">Bundles</a>
+    <a href="#guns">Guns</a>
+    <a href="#videos">Videos</a>
+  </nav>  <section id="emotes">
+    <h2 class="section-title">🔥 Top Emotes</h2>
+    <div class="grid">
       <div class="card">
-        <img src="https://upload.wikimedia.org/wikipedia/en/7/79/SasukeUchiha.png" alt="Sasuke">
-        <h3>Sasuke Uchiha</h3>
+        <img src="https://staticg.sportskeeda.com/editor/2021/04/c2997-16174434238442-800.jpg" alt="Emote 1">
+        <h3>LOL Emote</h3>
       </div>
       <div class="card">
-        <img src="https://upload.wikimedia.org/wikipedia/en/0/01/Goku_anime.png" alt="Goku">
-        <h3>Goku</h3>
-      </div>
-      <div class="card">
-        <img src="https://upload.wikimedia.org/wikipedia/en/5/50/Monkey_D_Luffy.png" alt="Luffy">
-        <h3>Luffy</h3>
+        <img src="https://staticg.sportskeeda.com/editor/2021/04/8e0a3-16174434344862-800.jpg" alt="Emote 2">
+        <h3>Booyah Emote</h3>
       </div>
     </div>
-  </section>  <section class="section" id="quotes">
-    <h2>Legendary Quotes</h2>
-    <div class="quote">"Power comes in response to a need, not a desire." – Goku</div>
-    <div class="quote">"When you give up, that's when the game is over." – Misaki Ayuzawa</div>
-    <div class="quote">"Hard work is worthless for those that don’t believe in themselves." – Naruto Uzumaki</div>
-  </section>  <section class="video-section" id="trailers">
-    <h2>Watch Trailers</h2>
-    <iframe src="https://www.youtube.com/embed/5x4R5LqXvO0" allowfullscreen></iframe>
+  </section>  <section id="bundles">
+    <h2 class="section-title">👕 Exclusive Bundles</h2>
+    <div class="grid">
+      <div class="card">
+        <img src="https://staticg.sportskeeda.com/editor/2021/04/e04cf-16174434437420-800.jpg" alt="Bundle 1">
+        <h3>Hip Hop Bundle</h3>
+      </div>
+      <div class="card">
+        <img src="https://staticg.sportskeeda.com/editor/2021/04/c24a7-16174434527498-800.jpg" alt="Bundle 2">
+        <h3>Street Boy Bundle</h3>
+      </div>
+    </div>
+  </section>  <section id="guns">
+    <h2 class="section-title">🔫 Legendary Guns</h2>
+    <div class="grid">
+      <div class="card">
+        <img src="https://assets.khiladiadda.com/ff-weapons/ak47.png" alt="Gun 1">
+        <h3>AK47 Dragon</h3>
+      </div>
+      <div class="card">
+        <img src="https://assets.khiladiadda.com/ff-weapons/mp40.png" alt="Gun 2">
+        <h3>MP40 Lightning</h3>
+      </div>
+    </div>
+  </section>  <section id="videos" class="video-section">
+    <h2 class="section-title">🎥 Action Trailer</h2>
+    <iframe src="https://www.youtube.com/embed/nw4FV4lVON4" allowfullscreen></iframe>
   </section>  <footer>
-    Anime Galaxy &copy; 2025 | Designed by Anime Fans for Anime Fans
+    Free Fire Arsenal &copy; 2025 | Unleash your style and power!
   </footer>
 </body>
 </html>
