@@ -2,61 +2,56 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Message for Vandana</title>
+  <title>Message for Vandana 💬</title>
   <style>
     body {
       margin: 0;
-      height: 100vh;
-      background: linear-gradient(to right, #1f1c2c, #928dab);
+      background-color: #121212;
+      font-family: 'Segoe UI', sans-serif;
       display: flex;
       justify-content: center;
       align-items: center;
-      overflow: hidden;
-      font-family: 'Segoe UI', sans-serif;
+      height: 100vh;
+      background: linear-gradient(to bottom, #0f0f0f, #1e1e1e);
     }
 
-    .msg-box {
-      text-align: center;
-      color: #fff;
-      animation: fadeIn 2s ease-in-out forwards;
+    .chat-box {
+      background-color: #25d366;
+      color: white;
+      max-width: 350px;
+      padding: 20px;
+      border-radius: 20px 20px 5px 20px;
+      box-shadow: 0 0 15px #0f0;
+      animation: floatIn 1.5s ease-out;
+      font-size: 1.1rem;
+      line-height: 1.6;
     }
 
-    h1 {
-      font-size: 3rem;
-      color: #ffccf9;
-      text-shadow: 0 0 15px #f0f;
-      animation: glow 2s ease-in-out infinite alternate;
+    @keyframes floatIn {
+      from {
+        transform: translateY(50px);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
     }
 
-    p {
-      font-size: 1.3rem;
-      margin-top: 15px;
-      color: #ffe6f7;
-      animation: slideUp 2s ease-out;
-    }
-
-    @keyframes glow {
-      from { text-shadow: 0 0 10px #f0f, 0 0 20px #f0f; }
-      to { text-shadow: 0 0 25px #ff99cc, 0 0 40px #ff99cc; }
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: scale(1.1); }
-      to { opacity: 1; transform: scale(1); }
-    }
-
-    @keyframes slideUp {
-      from { transform: translateY(50px); opacity: 0; }
-      to { transform: translateY(0); opacity: 1; }
+    .name {
+      font-weight: bold;
+      color: #003300;
     }
   </style>
 </head>
 <body>
-  <div class="msg-box">
-    <h1>Dear Vandana 🌸</h1>
-    <p>You are a beautiful soul, full of grace and light.<br>
-    This world is brighter with you in it. 💫<br>
-    Keep smiling, keep shining! 💖</p>
+  <div class="chat-box">
+    <span class="name">Vandana ❤️</span><br><br>
+    kabhi kabhi sochta hu ki kaise keh doon sab kuch...<br>
+    par fir lagta hai tu toh already sab kuch hai 🫶<br><br>
+    tu hansti hai toh duniya ruk si jaati hai, aur jab dukhi hoti hai toh sab kuch khaali lagta hai 💔<br>
+    tu hai toh sab kuch hai, tu na ho toh kuch bhi nahi...<br><br>
+    I don’t need 100 reasons to love you... ek tu hi kaafi hai 💌
   </div>
 </body>
 </html>
