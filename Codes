@@ -1,57 +1,278 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Message for Vandana 💬</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Modern Movie Explorer</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
   <style>
+    /* Reset and base */
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
     body {
       margin: 0;
-      background-color: #121212;
-      font-family: 'Segoe UI', sans-serif;
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(135deg, #1f1c2c, #928dab);
+      color: #f0f0f5;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      scroll-behavior: smooth;
+    }
+    a {
+      color: #64ffda;
+      text-decoration: none;
+    }
+    a:hover,
+    a:focus {
+      text-decoration: underline;
+    }
+    /* Layout */
+    header, footer {
+      background-color: rgba(31, 28, 44, 0.9);
+      backdrop-filter: saturate(180%) blur(15px);
+      padding: 16px 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      border-bottom: 1px solid #444;
+    }
+    header h1 {
+      font-weight: 700;
+      font-size: 1.8rem;
+      letter-spacing: 1.2px;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 24px;
+      padding-left: 0;
+      margin: 0;
+    }
+    nav ul li {
+      display: inline;
+    }
+    main {
+      flex: 1 1 auto;
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 32px 16px;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 32px;
+      width: 100%;
+    }
+    /* Search and filters */
+    .search-container {
       display: flex;
       justify-content: center;
-      align-items: center;
-      height: 100vh;
-      background: linear-gradient(to bottom, #0f0f0f, #1e1e1e);
+      margin-bottom: 24px;
     }
-
-    .chat-box {
-      background-color: #25d366;
-      color: white;
-      max-width: 350px;
-      padding: 20px;
-      border-radius: 20px 20px 5px 20px;
-      box-shadow: 0 0 15px #0f0;
-      animation: floatIn 1.5s ease-out;
+    .search-input {
+      width: 100%;
+      max-width: 480px;
+      padding: 12px 16px;
+      border-radius: 12px;
+      border: none;
+      font-size: 1rem;
+      outline-offset: 2px;
+      transition: box-shadow 0.3s ease;
+    }
+    .search-input:focus {
+      box-shadow: 0 0 0 3px #64ffda;
+    }
+    /* Movie grid */
+    .movies-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 24px;
+    }
+    .movie-card {
+      background: rgba(50, 48, 63, 0.8);
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(100, 255, 218, 0.2);
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+    }
+    .movie-card:hover,
+    .movie-card:focus-within {
+      transform: translateY(-6px);
+      box-shadow: 0 10px 30px rgba(100, 255, 218, 0.5);
+      outline: none;
+    }
+    .movie-poster {
+      width: 100%;
+      aspect-ratio: 2/3;
+      object-fit: cover;
+      border-bottom: 1px solid #444;
+    }
+    .movie-content {
+      padding: 16px;
+      flex: 1 1 auto;
+      display: flex;
+      flex-direction: column;
+    }
+    .movie-title {
+      font-weight: 700;
       font-size: 1.1rem;
-      line-height: 1.6;
+      margin: 0 0 8px 0;
+      color: #64ffda;
+      line-height: 1.2;
     }
-
-    @keyframes floatIn {
-      from {
-        transform: translateY(50px);
-        opacity: 0;
+    .movie-info {
+      font-size: 0.9rem;
+      margin-bottom: 12px;
+      color: #cdd6f4;
+      flex-grow: 1;
+    }
+    .movie-genres {
+      font-size: 0.8rem;
+      color: #94a1b2;
+      margin-top: auto;
+    }
+    /* Responsive header nav for smaller screens */
+    @media (max-width: 640px) {
+      header {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 12px;
       }
-      to {
-        transform: translateY(0);
-        opacity: 1;
+      nav ul {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 16px;
+      }
+      h1 {
+        flex-basis: 100%;
+        text-align: center;
       }
     }
-
-    .name {
-      font-weight: bold;
-      color: #003300;
+    /* Footer */
+    footer {
+      text-align: center;
+      font-size: 0.85rem;
+      color: #999;
     }
   </style>
 </head>
 <body>
-  <div class="chat-box">
-    <span class="name">Vandana ❤️</span><br><br>
-    kabhi kabhi sochta hu ki kaise keh doon sab kuch...<br>
-    par fir lagta hai tu toh already sab kuch hai 🫶<br><br>
-    tu hansti hai toh duniya ruk si jaati hai, aur jab dukhi hoti hai toh sab kuch khaali lagta hai 💔<br>
-    tu hai toh sab kuch hai, tu na ho toh kuch bhi nahi...<br><br>
-    I don’t need 100 reasons to love you... ek tu hi kaafi hai 💌
-  </div>
+  <header role="banner" aria-label="Main header">
+    <h1>Modern Movie Explorer</h1>
+    <nav role="navigation" aria-label="Primary navigation">
+      <ul>
+        <li><a href="#popular" tabindex="0">Popular</a></li>
+        <li><a href="#toprated" tabindex="0">Top Rated</a></li>
+        <li><a href="#upcoming" tabindex="0">Upcoming</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main>
+    <section class="search-container" aria-label="Search movies">
+      <input
+        type="search"
+        class="search-input"
+        placeholder="Search movies..."
+        aria-label="Search movies"
+        id="movieSearch"
+      />
+    </section>
+    <section aria-live="polite" aria-atomic="true" aria-relevant="additions removals" class="movies-grid" id="moviesGrid" role="list">
+      <!-- Movie cards injected dynamically -->
+    </section>
+  </main>
+  <footer>
+    &copy; 2024 Modern Movie Explorer. All rights reserved.
+  </footer>
+  <script>
+    // Movies data sample (normally fetched from API)
+    const movies = [
+      {
+        id: 1,
+        title: "Inception",
+        year: 2010,
+        rating: "PG-13",
+        genres: ["Action", "Sci-Fi", "Thriller"],
+        poster: "https://placehold.co/300x450/png?text=Inception+Poster",
+        description: "A thief who steals corporate secrets through use of dream-sharing technology."
+      },
+      {
+        id: 2,
+        title: "The Shawshank Redemption",
+        year: 1994,
+        rating: "R",
+        genres: ["Drama"],
+        poster: "https://placehold.co/300x450/png?text=Shawshank+Redemption",
+        description: "Two imprisoned men bond over a number of years, finding solace and eventual redemption."
+      },
+      {
+        id: 3,
+        title: "The Dark Knight",
+        year: 2008,
+        rating: "PG-13",
+        genres: ["Action", "Crime", "Drama"],
+        poster: "https://placehold.co/300x450/png?text=The+Dark+Knight",
+        description: "Batman faces the Joker, a criminal mastermind who wants to create chaos."
+      },
+      // Add more movie objects for realism
+    ];
+
+    const moviesGrid = document.getElementById('moviesGrid');
+    const searchInput = document.getElementById('movieSearch');
+
+    function createMovieCard(movie) {
+      const card = document.createElement('article');
+      card.className = 'movie-card';
+      card.setAttribute('role', 'listitem');
+      card.tabIndex = 0;
+      
+      card.innerHTML = `
+        <img class="movie-poster" src="${movie.poster}" alt="Poster of movie: ${movie.title}" />
+        <div class="movie-content">
+          <h2 class="movie-title">${movie.title} (${movie.year})</h2>
+          <p class="movie-info">${movie.description}</p>
+          <p class="movie-genres">${movie.genres.join(', ')}</p>
+        </div>
+      `;
+      return card;
+    }
+
+    function displayMovies(movieList) {
+      moviesGrid.innerHTML = '';
+      if (movieList.length === 0) {
+        const noResults = document.createElement('p');
+        noResults.textContent = "No movies found.";
+        noResults.style.textAlign = "center";
+        noResults.style.gridColumn = "1 / -1";
+        moviesGrid.appendChild(noResults);
+        return;
+      }
+      movieList.forEach(movie => {
+        moviesGrid.appendChild(createMovieCard(movie));
+      });
+    }
+
+    // Initial display
+    displayMovies(movies);
+
+    // Search functionality
+    searchInput.addEventListener('input', () => {
+      const query = searchInput.value.toLowerCase().trim();
+      const filteredMovies = movies.filter(movie => {
+        return (
+          movie.title.toLowerCase().includes(query) ||
+          movie.genres.some(genre => genre.toLowerCase().includes(query))
+        );
+      });
+      displayMovies(filteredMovies);
+    });
+  </script>
 </body>
 </html>
