@@ -1,728 +1,106 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
-<title>Free Run Game - Responsive & Adaptive</title>
-<style>
-  /* Reset & Box sizing */
-  *, *::before, *::after {
-    box-sizing: border-box;
-  }
-  body {
-    margin: 0; padding: 0;
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
-      Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    background: linear-gradient(135deg, #121212 0%, #1e1e1e 100%);
-    color: #e0e0e0;
-    display: flex; flex-direction: column;
-    min-height: 100vh;
-    overflow: hidden;
-  }
-  #app {
-    flex: 1 1 auto;
-    display: flex;
-    flex-direction: column;
-  }
-
-  /* Header */
-  header {
-    background: #222;
-    padding: 16px 24px;
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    border-bottom: 1px solid #444;
-  }
-  header h1 {
-    font-size: 1.5rem;
-    margin: 0;
-    background: linear-gradient(135deg, #0ff, #06f);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
-  .audio-control {
-    cursor: pointer;
-    color: #0ff;
-    font-size: 24px;
-    background: transparent;
-    border: none;
-  }
-  .audio-control:focus {
-    outline: 2px solid #06f;
-    outline-offset: 2px;
-  }
-
-  /* Main game container */
-  main {
-    flex: 1 1 auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 24px;
-    overflow: hidden;
-  }
-
-  /* Canvas styling */
-  #gameCanvas {
-    background: linear-gradient(180deg, #191919 0%, #121212 100%);
-    border-radius: 16px;
-    box-shadow:
-      0 8px 24px rgba(0, 255, 255, 0.15),
-      inset 0 0 12px 4px rgba(0, 255, 255, 0.1);
-    max-width: 100%;
-    height: auto;
-  }
-
-  /* HUD */
-  #hud {
-    position: absolute;
-    top: 16px;
-    left: 16px;
-    color: #0ff;
-    font-weight: 700;
-    font-size: 1.25rem;
-    user-select: none;
-    text-shadow: 0 0 5px cyan;
-  }
-
-  /* Game states overlay */
-  #overlay {
-    position: absolute;
-    top: 0; left: 0; right:0; bottom:0;
-    background: rgba(0, 0, 0, 0.85);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    padding: 24px;
-    z-index: 200;
-    color: #0ff;
-    visibility: visible;
-    opacity: 1;
-    transition: opacity 0.3s ease;
-  }
-  #overlay.hidden {
-    visibility: hidden;
-    opacity: 0;
-  }
-  #overlay h2 {
-    font-size: 2rem;
-    margin-bottom: 24px;
-  }
-  #overlay button {
-    background: #06f;
-    border: none;
-    padding: 14px 32px;
-    font-size: 1.25rem;
-    font-weight: 700;
-    border-radius: 12px;
-    color: white;
-    cursor: pointer;
-    box-shadow:
-      0 0 0 0 rgba(0, 102, 255, 0.7);
-    transition: box-shadow 0.3s ease;
-  }
-  #overlay button:hover,
-  #overlay button:focus {
-    box-shadow: 0 0 20px 8px rgba(0, 102, 255, 0.9);
-  }
-  #overlay p {
-    margin-top: 16px;
-    font-size: 1rem;
-  }
-
-  /* Controls container for touch */
-  #touch-controls {
-    position: fixed;
-    bottom: 24px;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    gap: 16px;
-    z-index: 150;
-  }
-  .touch-button {
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    background: rgba(0, 255, 255, 0.15);
-    backdrop-filter: blur(5px);
-    border: 2px solid #0ff;
-    color: #0ff;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 32px;
-    user-select: none;
-    touch-action: none;
-    transition: background-color 0.2s ease;
-  }
-  .touch-button:active,
-  .touch-button.pressed {
-    background: rgba(0, 255, 255, 0.5);
-  }
-
-  /* Responsive layout */
-  @media (max-width: 640px) {
-    header {
-      padding: 12px 16px;
-    }
-    #hud {
-      font-size: 1rem;
-      top: 12px; left: 12px;
-    }
-    #touch-controls {
-      width: 90vw;
-      max-width: 360px;
-      bottom: 16px;
-      gap: 12px;
-    }
-    .touch-button {
-      width: 54px; height: 54px; font-size: 28px;
-    }
-  }
-  @media (min-width: 1024px) {
-    main {
-      padding: 48px;
-    }
-    #gameCanvas {
-      max-width: 800px;
-      max-height: 450px;
-    }
-  }
-</style>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet" />
-<!-- Google Material Icons -->
-<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Calculator</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f4f8;
+            font-family: sans-serif;
+        }
+        .calculator {
+            background: #ffffff;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+        .calculator input[type="text"] {
+            width: 100%;
+            height: 60px;
+            font-size: 24px;
+            text-align: right;
+            padding: 10px;
+            border: none;
+            border-radius: 8px;
+            background: #f0f0f0;
+            margin-bottom: 15px;
+        }
+        .buttons {
+            display: grid;
+            grid-template-columns: repeat(4, 60px);
+            gap: 10px;
+            justify-content: center;
+        }
+        .buttons button {
+            height: 60px;
+            font-size: 20px;
+            border: none;
+            border-radius: 8px;
+            background-color: #3498db;
+            color: white;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .buttons button:hover {
+            background-color: #2980b9;
+        }
+        .buttons .equal {
+            background-color: #27ae60;
+        }
+        .buttons .equal:hover {
+            background-color: #1e8449;
+        }
+    </style>
 </head>
 <body>
-  <div id="app" role="main" aria-label="Free Run Game Application">
-    <header>
-      <h1>Free Run Game</h1>
-      <button id="audio-toggle" class="audio-control" aria-label="Toggle audio" title="Toggle audio">
-        <span class="material-icons">volume_up</span>
-      </button>
-    </header>
+    <div class="calculator">
+        <input type="text" id="display" readonly>
+        <div class="buttons">
+            <button onclick="appendValue('7')">7</button>
+            <button onclick="appendValue('8')">8</button>
+            <button onclick="appendValue('9')">9</button>
+            <button onclick="appendValue('/')">/</button><button onclick="appendValue('4')">4</button>
+        <button onclick="appendValue('5')">5</button>
+        <button onclick="appendValue('6')">6</button>
+        <button onclick="appendValue('*')">*</button>
 
-    <main>
-      <canvas id="gameCanvas" width="800" height="450" aria-label="Game canvas"></canvas>
-      <div id="hud" aria-live="polite" aria-atomic="true">Score: 0</div>
-    </main>
+        <button onclick="appendValue('1')">1</button>
+        <button onclick="appendValue('2')">2</button>
+        <button onclick="appendValue('3')">3</button>
+        <button onclick="appendValue('-')">-</button>
 
-    <div id="overlay" role="dialog" aria-modal="true" aria-labelledby="overlay-title" aria-describedby="overlay-desc">
-      <h2 id="overlay-title">Free Run</h2>
-      <p id="overlay-desc">Press Start to begin running!</p>
-      <button id="startButton" aria-label="Start game">Start</button>
+        <button onclick="appendValue('0')">0</button>
+        <button onclick="appendValue('.')">.</button>
+        <button onclick="calculate()" class="equal">=</button>
+        <button onclick="appendValue('+')">+</button>
+
+        <button onclick="clearDisplay()" style="grid-column: span 4; background-color: #e74c3c;">C</button>
     </div>
-
-    <div id="touch-controls" aria-label="Touch game controls" role="region" aria-live="polite" aria-atomic="true">
-      <button class="touch-button" id="btn-jump" aria-label="Jump"><span class="material-icons">arrow_upward</span></button>
-      <button class="touch-button" id="btn-slide" aria-label="Slide"><span class="material-icons">arrow_downward</span></button>
-    </div>
-  </div>
+</div>
 
 <script>
-(() => {
-  'use strict';
+    const display = document.getElementById('display');
 
-  // Detect device capabilities
-  const isTouchDevice = ('ontouchstart' in window) || navigator.maxTouchPoints > 0;
+    function appendValue(value) {
+        display.value += value;
+    }
 
-  // DOM Elements
-  const canvas = document.getElementById('gameCanvas');
-  const ctx = canvas.getContext('2d');
-  const hud = document.getElementById('hud');
-  const overlay = document.getElementById('overlay');
-  const startButton = document.getElementById('startButton');
-  const audioToggle = document.getElementById('audio-toggle');
-  const btnJump = document.getElementById('btn-jump');
-  const btnSlide = document.getElementById('btn-slide');
-  const touchControls = document.getElementById('touch-controls');
-
-  if (!isTouchDevice) {
-    touchControls.style.display = 'none';
-  }
-
-  // Game variables
-  let gameWidth = canvas.width;
-  let gameHeight = canvas.height;
-  let lastTime = 0;
-  let gameSpeed = 6;
-  let gravity = 0.7;
-  let score = 0;
-  let highScore = 0;
-
-  // Game states enum
-  const GameStates = {
-    MENU: 'menu',
-    RUNNING: 'running',
-    PAUSED: 'paused',
-    GAMEOVER: 'gameover'
-  };
-  let gameState = GameStates.MENU;
-
-  // Character sprites (simple shapes for demo)
-  // Character states: running, jumping, sliding
-  // We'll animate these inline with basic shapes
-
-  // Player
-  const player = {
-    x: 80,
-    y: gameHeight - 80,
-    width: 48,
-    height: 64,
-    vy: 0,
-    grounded: true,
-    jumping: false,
-    sliding: false,
-    slideTimer: 0,
-    runFrame: 0,
-    update: function(deltaTime) {
-      if (this.jumping) {
-        this.vy += gravity;
-        this.y += this.vy;
-        if (this.y >= gameHeight - this.height - 20) {
-          this.y = gameHeight - this.height - 20;
-          this.vy = 0;
-          this.grounded = true;
-          this.jumping = false;
+    function calculate() {
+        try {
+            display.value = eval(display.value);
+        } catch {
+            display.value = 'Error';
         }
-      }
-      if (this.sliding) {
-        this.slideTimer += deltaTime;
-        if (this.slideTimer > 500) { // Slide lasts 0.5sec
-          this.sliding = false;
-          this.height = 64;
-          this.y = gameHeight - this.height - 20;
-          this.slideTimer = 0;
-        }
-      }
-      // Running animation frame update
-      if (!this.jumping && !this.sliding) {
-        this.runFrame += deltaTime * 0.01; // Speed of animation
-        if (this.runFrame > 4) this.runFrame = 0;
-      }
-    },
-    jump: function() {
-      if (this.grounded && !this.sliding) {
-        this.vy = -14;
-        this.grounded = false;
-        this.jumping = true;
-      }
-    },
-    slide: function() {
-      if (this.grounded && !this.sliding && !this.jumping) {
-        this.sliding = true;
-        this.height = 32;
-        this.y = gameHeight - this.height - 20;
-        this.slideTimer = 0;
-      }
-    },
-    draw: function(ctx) {
-      ctx.save();
-      ctx.fillStyle = '#0ff';
-      ctx.shadowColor = '#0ff';
-      ctx.shadowBlur = 12;
-      if (this.jumping) {
-        // Jump pose (circle head, body rectangle)
-        ctx.beginPath();
-        ctx.arc(this.x + this.width/2, this.y + 16, 14, 0, Math.PI * 2);
-        ctx.fill();
-        ctx.fillRect(this.x + 12, this.y + 30, 24, 34);
-      } else if (this.sliding) {
-        // Slide pose (lower rectangle with gradient)
-        let grad = ctx.createLinearGradient(this.x, this.y, this.x + this.width, this.y + this.height);
-        grad.addColorStop(0, '#0ff');
-        grad.addColorStop(1, '#006666');
-        ctx.fillStyle = grad;
-        ctx.fillRect(this.x, this.y, this.width, this.height);
-      } else {
-        // Running animation: simple rectangle with two legs alternating
-        ctx.fillRect(this.x, this.y, this.width, this.height);
-        // Legs
-        ctx.fillStyle = '#06b6d4';
-        if (Math.floor(this.runFrame) % 2 === 0) {
-          ctx.fillRect(this.x + 10, this.y + this.height, 12, 16);
-          ctx.fillRect(this.x + 26, this.y + this.height - 8, 12, 16);
-        } else {
-          ctx.fillRect(this.x + 10, this.y + this.height - 8, 12, 16);
-          ctx.fillRect(this.x + 26, this.y + this.height, 12, 16);
-        }
-      }
-      ctx.restore();
-    }
-  };
-
-  // Obstacles
-  class Obstacle {
-    constructor(x, y, width, height, type = 'block') {
-      this.x = x;
-      this.y = y;
-      this.width = width;
-      this.height = height;
-      this.type = type;
-      this.passed = false;
-    }
-    update(speed) {
-      this.x -= speed;
-    }
-    draw(ctx) {
-      ctx.save();
-      ctx.fillStyle = '#f302f3';
-      ctx.shadowColor = '#f302f3';
-      ctx.shadowBlur = 8;
-      ctx.fillRect(this.x, this.y, this.width, this.height);
-      ctx.restore();
-    }
-    isColliding(player) {
-      return player.x < this.x + this.width &&
-        player.x + player.width > this.x &&
-        player.y < this.y + this.height &&
-        player.y + player.height > this.y;
-    }
-  }
-
-  // Game environment
-  let obstacles = [];
-  let obstacleTimer = 0;
-  let obstacleInterval = 2000; // initial spawn every 2 seconds
-
-  // Difficulty progression
-  function adjustDifficulty(score) {
-    if (score > 200) {
-      gameSpeed = 12;
-      obstacleInterval = 1200;
-    } else if (score > 100) {
-      gameSpeed = 10;
-      obstacleInterval = 1500;
-    }
-  }
-
-  // Sounds using Web Audio API
-  const audioContext = new (window.AudioContext || window.webkitAudioContext)();
-  let gainNode = audioContext.createGain();
-  gainNode.gain.value = 0.7;
-  gainNode.connect(audioContext.destination);
-
-  let audioOn = true;
-
-  // Jump sound
-  function playJumpSound() {
-    if (!audioOn) return;
-    const osc = audioContext.createOscillator();
-    osc.type = 'triangle';
-    osc.frequency.setValueAtTime(440, audioContext.currentTime);
-    osc.connect(gainNode);
-    osc.start();
-    osc.stop(audioContext.currentTime + 0.1);
-  }
-  // Slide sound
-  function playSlideSound() {
-    if (!audioOn) return;
-    const osc = audioContext.createOscillator();
-    osc.type = 'square';
-    osc.frequency.setValueAtTime(220, audioContext.currentTime);
-    osc.connect(gainNode);
-    osc.start();
-    osc.stop(audioContext.currentTime + 0.1);
-  }
-  // Hit sound
-  function playHitSound() {
-    if (!audioOn) return;
-    const osc = audioContext.createOscillator();
-    osc.type = 'sawtooth';
-    osc.frequency.setValueAtTime(110, audioContext.currentTime);
-    osc.connect(gainNode);
-    osc.start();
-    osc.stop(audioContext.currentTime + 0.3);
-  }
-
-  // Background music (simple loop)
-  let bgOsc;
-  function startBackgroundMusic() {
-    if (!audioOn) return;
-    bgOsc = audioContext.createOscillator();
-    bgOsc.type = 'sine';
-    bgOsc.frequency.setValueAtTime(130, audioContext.currentTime);
-    bgOsc.connect(gainNode);
-    bgOsc.start();
-  }
-  function stopBackgroundMusic() {
-    if (bgOsc) {
-      bgOsc.stop();
-      bgOsc.disconnect();
-      bgOsc = null;
-    }
-  }
-
-  // High score persistence
-  function loadHighScore() {
-    const saved = localStorage.getItem('freeRunHighScore');
-    if (saved) highScore = Number(saved);
-  }
-  function saveHighScore() {
-    localStorage.setItem('freeRunHighScore', highScore);
-  }
-
-  // Resize canvas to keep aspect ratio and fit container width
-  function resizeCanvas() {
-    const rect = canvas.parentElement.getBoundingClientRect();
-    let ratio = canvas.width / canvas.height;
-    let width = rect.width;
-    let height = width / ratio;
-    if (height > window.innerHeight - 150) {
-      height = window.innerHeight - 150;
-      width = height * ratio;
-    }
-    canvas.style.width = width + 'px';
-    canvas.style.height = height + 'px';
-  }
-
-  // Show and hide overlay
-  function showOverlay(message, desc, btnText) {
-    overlay.querySelector('h2').textContent = message;
-    overlay.querySelector('p').textContent = desc;
-    startButton.textContent = btnText;
-    overlay.classList.remove('hidden');
-    startButton.focus();
-  }
-  function hideOverlay() {
-    overlay.classList.add('hidden');
-  }
-
-  // Reset game
-  function resetGame() {
-    score = 0;
-    gameSpeed = 6;
-    obstacles = [];
-    obstacleTimer = 0;
-    player.x = 80;
-    player.y = gameHeight - player.height - 20;
-    player.vy = 0;
-    player.grounded = true;
-    player.jumping = false;
-    player.sliding = false;
-    player.slideTimer = 0;
-    player.runFrame = 0;
-  }
-
-  // Game loop
-  function gameLoop(timestamp) {
-    if (!lastTime) lastTime = timestamp;
-    const deltaTime = timestamp - lastTime;
-    lastTime = timestamp;
-
-    if (gameState === GameStates.RUNNING) {
-      // Update
-      obstacleTimer += deltaTime;
-      if (obstacleTimer > obstacleInterval) {
-        obstacleTimer = 0;
-        spawnObstacle();
-      }
-      adjustDifficulty(score);
-
-      player.update(deltaTime);
-
-      // Update obstacles
-      for (let i = obstacles.length -1; i >= 0; i--) {
-        obstacles[i].update(gameSpeed);
-
-        // Remove offscreen obstacles
-        if (obstacles[i].x + obstacles[i].width < 0) {
-          obstacles.splice(i, 1);
-          score += 5;
-        }
-
-        // Check collision
-        if (obstacles[i].isColliding(player)) {
-          gameOver();
-          return;
-        }
-      }
-
-      // Update HUD
-      hud.textContent = `Score: ${score}  High Score: ${highScore}`;
-
-      // Clear canvas
-      ctx.clearRect(0, 0, gameWidth, gameHeight);
-
-      // Draw ground line
-      ctx.strokeStyle = '#06f';
-      ctx.lineWidth = 2;
-      ctx.shadowColor = '#06f';
-      ctx.shadowBlur = 8;
-
-      ctx.beginPath();
-      ctx.moveTo(0, gameHeight - 20);
-      ctx.lineTo(gameWidth, gameHeight - 20);
-      ctx.stroke();
-
-      // Draw player and obstacles
-      player.draw(ctx);
-
-      obstacles.forEach(ob => ob.draw(ctx));
     }
 
-    requestAnimationFrame(gameLoop);
-  }
-
-  // Spawn obstacles randomly
-  function spawnObstacle() {
-    // Obstacles: block on ground or higher (like jump required)
-    const type = Math.random() > 0.5 ? 'block' : 'high';
-    if (type === 'block') {
-      // block on ground (player must jump)
-      obstacles.push(new Obstacle(gameWidth, gameHeight - 52, 40, 32));
-    } else {
-      // smaller higher obstacle (player must slide)
-      obstacles.push(new Obstacle(gameWidth, gameHeight - 96, 30, 20));
+    function clearDisplay() {
+        display.value = '';
     }
-  }
-
-  // Game over
-  function gameOver() {
-    playHitSound();
-    gameState = GameStates.GAMEOVER;
-    stopBackgroundMusic();
-    if (score > highScore) {
-      highScore = score;
-      saveHighScore();
-      showOverlay('Game Over', `New High Score! ${score}`, 'Restart');
-    } else {
-      showOverlay('Game Over', `Score: ${score}`, 'Restart');
-    }
-  }
-
-  // Start game
-  function startGame() {
-    resetGame();
-    hideOverlay();
-    gameState = GameStates.RUNNING;
-    lastTime = 0;
-    playBackgroundMusic();
-  }
-
-  // Pause & resume
-  function pauseGame() {
-    if (gameState === GameStates.RUNNING) {
-      gameState = GameStates.PAUSED;
-      showOverlay('Paused', 'Tap Start to resume', 'Resume');
-      stopBackgroundMusic();
-    }
-  }
-  function resumeGame() {
-    hideOverlay();
-    gameState = GameStates.RUNNING;
-    lastTime = 0;
-    playBackgroundMusic();
-  }
-
-  // Controls handling
-  function handleKeyDown(e) {
-    if (gameState !== GameStates.RUNNING) return;
-    if (e.repeat) return;
-    switch(e.code) {
-      case 'ArrowUp':
-      case 'KeyW':
-      case 'Space':
-        player.jump();
-        playJumpSound();
-        break;
-      case 'ArrowDown':
-      case 'KeyS':
-        player.slide();
-        playSlideSound();
-        break;
-      case 'KeyP':
-      case 'Escape':
-        pauseGame();
-        break;
-    }
-  }
-
-  // Touch controls
-  function setupTouchControls() {
-    if (!isTouchDevice) return;
-    btnJump.addEventListener('touchstart', (e) => {
-      e.preventDefault();
-      player.jump();
-      playJumpSound();
-      btnJump.classList.add('pressed');
-    });
-    btnJump.addEventListener('touchend', (e) => {
-      e.preventDefault();
-      btnJump.classList.remove('pressed');
-    });
-    btnSlide.addEventListener('touchstart', (e) => {
-      e.preventDefault();
-      player.slide();
-      playSlideSound();
-      btnSlide.classList.add('pressed');
-    });
-    btnSlide.addEventListener('touchend', (e) => {
-      e.preventDefault();
-      btnSlide.classList.remove('pressed');
-    });
-  }
-
-  function playBackgroundMusic() {
-    if (!audioOn) return;
-    if (audioContext.state === 'suspended') {
-      audioContext.resume();
-    }
-    startBackgroundMusic();
-  }
-
-  // Audio toggle
-  audioToggle.addEventListener('click', () => {
-    audioOn = !audioOn;
-    if (!audioOn) {
-      stopBackgroundMusic();
-      audioToggle.innerHTML = '<span class="material-icons">volume_off</span>';
-    } else {
-      audioToggle.innerHTML = '<span class="material-icons">volume_up</span>';
-      if (gameState === GameStates.RUNNING) {
-        playBackgroundMusic();
-      }
-    }
-  });
-
-  // Start button click
-  startButton.addEventListener('click', () => {
-    if (gameState === GameStates.RUNNING) {
-      pauseGame();
-    } else if (gameState === GameStates.PAUSED) {
-      resumeGame();
-    } else {
-      startGame();
-    }
-  });
-
-  // Keyboard
-  window.addEventListener('keydown', handleKeyDown);
-
-  // Resize
-  window.addEventListener('resize', () => {
-    resizeCanvas();
-  });
-
-  // Initial calls
-  loadHighScore();
-  resizeCanvas();
-  setupTouchControls();
-  showOverlay('Free Run', 'Press Start to begin running!', 'Start');
-
-  // Start animation loop
-  requestAnimationFrame(gameLoop);
-
-})();
 </script>
 
 </body>
 </html>
-
